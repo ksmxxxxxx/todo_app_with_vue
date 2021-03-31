@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="columns">
+      <div class="column is-two-thirds is-offset-one-fifth">
+        <div class="hero is-primary">
+          <div class="hero-body">
+            <h1 class="title">Todo List</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-two-thirds is-offset-one-fifth">
+        <div id="app">
+          <div id="add-todo">
+            <form @submit.prevent="addTodoItem" class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label for="add-todo-item-text" class="label">Todo</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-grouped">
+                  <div class="control is-expanded">
+                    <input id="add-todo-item-text" type="text" v-model="newTodo" class="input">
+                  </div>
+                  <div class="control">
+                    <button type="submit" class="button is-primary">Add</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="list-todo">
+            <ul>
+              <li v-for="(todo, index) in todos" class="mt-3">
+                <div class="field is-grouped">
+                  <div v-show="!todo.edit" class="display-item control is-expanded">
+                    <input type="text" value="" v-model="todo.item" class="input is-static" readonly>
+                  </div>
+                  <div v-show="todo.edit" class="display-edit-item control is-expanded">
+                    <div class="field is-grouped">
+                      <div class="control is-expanded">
+                        <input type="text" v-model="todo.item" class="input">
+                      </div>
+                      <div class="control">
+                        <button @click="closeEdit(index)" class="button is-primary">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="control">
+                    <button @click="enableEdit(index)" class="button is-light">Edit</button>
+                  </div>
+                  <div class="control">
+                    <button @click="removeTodoItem(index)" class="button is-danger is-light">Remove</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
