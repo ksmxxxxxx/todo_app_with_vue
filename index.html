@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <title></title>
+    <title>Todo List</title>
   </head>
   <body>
     <div class="columns">
@@ -39,10 +39,10 @@
 
           <div class="list-todo">
             <ul>
-              <li v-for="(todo, index) in todos" class="mt-3">
+              <li v-for="(todo, index) in todos" :key="todo.index" class="mt-3">
                 <div class="field is-grouped">
                   <div v-show="!todo.edit" class="display-item control is-expanded">
-                    <input type="text" value="" v-model="todo.item" class="input is-static" readonly>
+                    <input type="text" v-model="todo.item" class="input is-static" readonly>
                   </div>
                   <div v-show="todo.edit" class="display-edit-item control is-expanded">
                     <div class="field is-grouped">

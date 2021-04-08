@@ -39,7 +39,7 @@ const app = Vue.createApp({
       this.saveTodoItem()
     },
     saveTodoItem () {
-      let parsed = JSON.stringify(this.todos)
+      const parsed = JSON.stringify(this.todos)
       localStorage.setItem('todos', parsed)
     }
   }
